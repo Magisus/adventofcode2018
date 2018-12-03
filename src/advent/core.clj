@@ -1,7 +1,10 @@
 (ns advent.core
-  (:gen-class))
+  (:gen-class)
+  (:require [clojure.string :as string]))
 
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
-  (println "Hello, World!"))
+  (let [input (string/trim (slurp "resources/day1_input.txt"))
+        num-strings (string/split input #"\n")
+        nums (map #(Integer/parseInt %) num-strings)]
+    (reduce + nums)))
